@@ -49,22 +49,22 @@ public class Movement: MonoBehaviour
         float verticalInput = 0f;
 
         //do the movement
-        if (Input.GetKeyDown(UP))
+        if (Input.GetKey(UP))
         {
             Debug.Log("UP!");
             verticalInput = 1f;
         }
-        else if (Input.GetKeyDown(DOWN))
+        else if (Input.GetKey(DOWN))
         {
             Debug.Log("DOWN!");
             verticalInput = -1f;
         }
-        else if (Input.GetKeyDown(LEFT))
+        else if (Input.GetKey(LEFT))
         {
             Debug.Log("LEFT!");
             horizontalInput = -1f;
         }
-        else if (Input.GetKeyDown(RIGHT))
+        else if (Input.GetKey(RIGHT))
         {
             Debug.Log("RIGHT!");
             horizontalInput = 1f;
