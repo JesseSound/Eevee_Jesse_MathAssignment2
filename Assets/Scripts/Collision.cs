@@ -37,34 +37,26 @@ public class Collision : MonoBehaviour
         if (circlSqrHit)
         {
             Debug.Log("Hit Square and Circle");
+            circle.GetComponent<SpriteRenderer>().color = Color.green;
+            square.GetComponent<SpriteRenderer>().color = Color.green;
+        }
+        else
+        {
+            circle.GetComponent<SpriteRenderer>().color = Color.red;
+            square.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
     }
 
     bool circleSquareCollision(float positionCircleX,float positionCircleY, float radius, float squarePosX, float squarePosY, float squareWidth, float squareHeight )
     {
-        float testX = positionCircleX;
-        float testY = positionCircleY;
+        float closestX = Mathf.Clamp(positionCircleX, squarePosX - squareWidth / 2, squarePosX + squareWidth / 2);
+        float closestY = Mathf.Clamp(positionCircleY, squarePosY - squareHeight / 2, squarePosY + squareHeight / 2);
 
-        if (positionCircleX < squarePosX) // test left edge
-        {
-            testX = squarePosX;
-        } else if (positionCircleX > squarePosX + squareWidth) //test right edge
-        {
-            testX= squarePosX + squareWidth;
-        } 
-        if(positionCircleY < squarePosY) // test top edge
-        {
-            testY = squarePosY;
-        }else if (positionCircleY > squarePosY + squareHeight) // test bottom edge
-        {
-            testY = squarePosY + squareHeight;
-        }
-        //get distance from edges
-        float distX = positionCircleX - testX;
-        float distY = positionCircleY - testY;
-        float distance = Mathf.Sqrt((distX * distX) + (distY * distY));
+        // Calculate the distance between the circle's center and the closest point on the square
+        float distance = Vector2.Distance(new Vector2(positionCircleX, positionCircleY), new Vector2(closestX, closestY));
 
+        // Check for collision
         if (distance < radius)
         {
             return true;
