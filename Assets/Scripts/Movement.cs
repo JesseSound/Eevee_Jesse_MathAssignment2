@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Movement: MonoBehaviour
 {
+    public float moveSpeed;
+
     string objectName;
+
     KeyCode UP;
     KeyCode DOWN;
     KeyCode LEFT;
@@ -41,24 +44,41 @@ public class Movement: MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
-        
+        //setting up Horizontal and Vertical movement
+        float horizontalInput = 0f;
+        float verticalInput = 0f;
 
+        //do the movement
         if (Input.GetKeyDown(UP))
         {
             Debug.Log("UP!");
+            verticalInput = 1f;
         }
         else if (Input.GetKeyDown(DOWN))
         {
             Debug.Log("DOWN!");
+            verticalInput = -1f;
         }
         else if (Input.GetKeyDown(LEFT))
         {
             Debug.Log("LEFT!");
+            horizontalInput = -1f;
         }
         else if (Input.GetKeyDown(RIGHT))
         {
             Debug.Log("RIGHT!");
+            horizontalInput = 1f;
         }
+
+        // Calculate movement direction
+        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+
+        // Normalize the vector 
+        movement.Normalize();
+
+        // Move the object based on the input and speed
+        transform.position += movement * moveSpeed * Time.deltaTime;
+
+
     }
 }
