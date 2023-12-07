@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Movement: MonoBehaviour
+public class MovementPart2 : MonoBehaviour
 {
     public float moveSpeed;
 
@@ -12,11 +12,22 @@ public class Movement: MonoBehaviour
     KeyCode DOWN;
     KeyCode LEFT;
     KeyCode RIGHT;
+
+
+
+
+    bool isGrounded = false;
+    public float mASS;
+
+    public float gravity = -9.8f;
+    Vector3 velocity = Vector3.zero;
+
+
     // Start is called before the first frame update
     void Start()
     {
         //Get the name of the object the script is attached to. Hopefully, we will be able to condense movement
-         objectName = gameObject.name;
+        objectName = gameObject.name;
         //CONNOR I KNOW YOU HATE STRINGS BUT I DON'T OK AT LEAST NOT IN THIS CONTEXT
         if (objectName == "Capsule")
         {
@@ -71,13 +82,13 @@ public class Movement: MonoBehaviour
         }
 
         // Calculate movement direction
-        Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
+        //Vector3 movement = new Vector3(horizontalInput, verticalInput, 0f);
 
-        // Normalize the vector 
-        movement.Normalize();
-
-        // Move the object based on the input and speed
-        transform.position += movement * moveSpeed * Time.deltaTime;
+        //// Normalize the vector 
+        //movement.Normalize();
+        float gravForce = mASS * gravity;
+            velocity.y += gravForce * Time.deltaTime;
+        transform.position += velocity * Time.deltaTime;
 
 
     }
