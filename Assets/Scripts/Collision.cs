@@ -15,7 +15,7 @@ public class Collision : MonoBehaviour
     public GameObject capsuleTop;
     public GameObject capsuleBot;
 
-    public GameObject projection;
+    public GameObject projection; //for circle capsule projection
 
     
 
@@ -62,10 +62,12 @@ public class Collision : MonoBehaviour
         float capsuleRadius = capsule.transform.localScale.x * 0.05f ;
 
 
-
+        //detect collisions
         bool circlSqrHit = circleSquareCollision(positionCircX, positionCircY, radius1, sqrPosX, sqrPosY, sqrH, sqrW);
         bool capsCircleHit = circleCapsuleCollision(positionCirc, radius1, capsPos, capsuleRadius, capsule.transform.up.normalized, capsuleH * 0.5f);
-        //bool capsCircleHit = circleCapsuleCollision(positionCirc,radius1, capsPos, );
+        
+
+        //do things when collided
         if (circlSqrHit)
         {
             Debug.Log("Hit Square and Circle");
@@ -119,8 +121,9 @@ public class Collision : MonoBehaviour
 
         Vector3 top, bot;
         CapsulePoints(capsule.transform.position, capsule.transform.up, capsule.transform.localScale.y * 0.5f, out top, out bot);
-        ProjectPointLine(projection.transform.position, top, bot);
-        bool collision = CheckCollisionCircles(positionCircle, circleRadius, projection.transform.position, projection.transform.localScale.x * 0.05f);
+        Vector3 proj = ProjectPointLine(circle.transform.position, top, bot);
+        projection.transform.position = proj;
+        bool collision = CheckCollisionCircles(positionCircle, circleRadius, projection.transform.position, projection.transform.localScale.x * 0.5f);
         if (collision)
         {
             return true;
