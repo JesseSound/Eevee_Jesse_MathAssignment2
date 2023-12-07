@@ -15,8 +15,8 @@ public class Collision : MonoBehaviour
     public GameObject capsuleTop;
     public GameObject capsuleBot;
 
-    public GameObject projection; //for circle capsule projection
-
+    public GameObject projectionCirc; //for circle capsule projection
+    public GameObject projectionSqr; //for square capsule projection
     
 
 
@@ -55,17 +55,17 @@ public class Collision : MonoBehaviour
 
         //capsule info
         Vector3 capsPos = capsule.transform.position;
-        float capsulePosX = capsule.transform.position.x;
-        float capsulePosY = capsule.transform.position.y;
+       // float capsulePosX = capsule.transform.position.x;
+        //float capsulePosY = capsule.transform.position.y;
         float capsuleH = capsule.transform.localScale.y; //capsule height
-        float capsuleW = capsule.transform.localScale.x; //capsule width
+       // float capsuleW = capsule.transform.localScale.x; //capsule width
         float capsuleRadius = capsule.transform.localScale.x * 0.05f ;
 
 
         //detect collisions
         bool circlSqrHit = circleSquareCollision(positionCircX, positionCircY, radius1, sqrPosX, sqrPosY, sqrH, sqrW);
         bool capsCircleHit = circleCapsuleCollision(positionCirc, radius1, capsPos, capsuleRadius, capsule.transform.up.normalized, capsuleH * 0.5f);
-        
+        bool sqrCaps = squareCapsuleCollision(projectionSqr.transform.position, projectionSqr.transform.position.x * 0.5f, capsPos, capsuleRadius, capsule.transform.up.normalized, capsuleH * 0.5f, sqrPosX, sqrPosY, sqrH, sqrW);
 
         //do things when collided
         if (circlSqrHit)
@@ -78,6 +78,10 @@ public class Collision : MonoBehaviour
         {
             circle.GetComponent<SpriteRenderer>().color = Color.green;
             capsule.GetComponent<SpriteRenderer>().color = Color.green;
+        }else if(sqrCaps)
+        {
+            capsule.GetComponent<SpriteRenderer>().color = Color.green;
+            square.GetComponent<SpriteRenderer>().color = Color.green;
         }
 
         else
@@ -87,6 +91,8 @@ public class Collision : MonoBehaviour
             square.GetComponent<SpriteRenderer>().color = Color.red;
         }
 
+
+        //maintain top and bot visual and placement
         Vector3 top, bot;
         CapsulePoints(capsule.transform.position, capsule.transform.up, capsuleH * 0.5f, out top, out bot) ;
         capsuleTop.transform.position = top;
@@ -121,15 +127,41 @@ public class Collision : MonoBehaviour
 
         Vector3 top, bot;
         CapsulePoints(capsule.transform.position, capsule.transform.up, capsule.transform.localScale.y * 0.5f, out top, out bot);
-        Vector3 proj = ProjectPointLine(circle.transform.position, top, bot);
-        projection.transform.position = proj;
-        bool collision = CheckCollisionCircles(positionCircle, circleRadius, projection.transform.position, projection.transform.localScale.x * 0.5f);
+        Vector3 proj = ProjectPointLine(circle.transform.position, top, bot); //draw a line between top and bot
+        projectionCirc.transform.position = proj; //move the projectionCirc along the capsule
+        bool collision = CheckCollisionCircles(positionCircle, circleRadius, projectionCirc.transform.position, projectionCirc.transform.localScale.x * 0.5f);
         if (collision)
         {
             return true;
         }
         return false;
     }
+
+
+
+
+    bool squareCapsuleCollision(Vector3 projectionPosition, float projectionRadius, Vector3 positionCapsule, float capsuleRadius, Vector3 direction, float capsuleHalfHeight, float squarePosX, float squarePosY, float squareWidth, float squareHeight)
+    {
+
+        Vector3 top, bot;
+        CapsulePoints(capsule.transform.position, capsule.transform.up, capsule.transform.localScale.y * 0.5f, out top, out bot);
+        Vector3 proj = ProjectPointLine(square.transform.position, top, bot); //draw a line between top and bot
+        projectionSqr.transform.position = proj; //move the projectionCirc along the capsule
+        bool collision = circleSquareCollision(projectionCirc.transform.position.x,projectionCirc.transform.position.y, projectionCirc.transform.localScale.x * 0.5f, squarePosX, squarePosY, squareWidth,squareHeight);
+        if (collision)
+        {
+            return true;
+        }
+        return false;
+    }
+
+
+
+
+
+
+
+
 
     Vector3 ProjectPointLine(Vector3 P, Vector3 A, Vector3 B)
     {
