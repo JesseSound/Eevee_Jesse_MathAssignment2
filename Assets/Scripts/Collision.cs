@@ -155,14 +155,6 @@ public class Collision : MonoBehaviour
         return false;
     }
 
-
-
-
-
-
-
-
-
     Vector3 ProjectPointLine(Vector3 P, Vector3 A, Vector3 B)
     {
         Vector3 AB = B - A;
