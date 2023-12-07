@@ -59,11 +59,12 @@ public class Collision : MonoBehaviour
         float capsulePosY = capsule.transform.position.y;
         float capsuleH = capsule.transform.localScale.y; //capsule height
         float capsuleW = capsule.transform.localScale.x; //capsule width
-
+        float capsuleRadius = capsule.transform.localScale.x * 0.05f ;
 
 
 
         bool circlSqrHit = circleSquareCollision(positionCircX, positionCircY, radius1, sqrPosX, sqrPosY, sqrH, sqrW);
+        bool capsCircleHit = circleCapsuleCollision(positionCirc, radius1, capsPos, capsuleRadius, capsule.transform.up.normalized, capsuleH * 0.5f);
         //bool capsCircleHit = circleCapsuleCollision(positionCirc,radius1, capsPos, );
         if (circlSqrHit)
         {
@@ -71,11 +72,11 @@ public class Collision : MonoBehaviour
             circle.GetComponent<SpriteRenderer>().color = Color.green;
             square.GetComponent<SpriteRenderer>().color = Color.green;
         }
-        //else if (capsCircleHit)
-        //{
-        //    circle.GetComponent<SpriteRenderer>().color = Color.green;
-        //    capsule.GetComponent<SpriteRenderer>().color = Color.green;
-        //}
+        else if (capsCircleHit)
+        {
+            circle.GetComponent<SpriteRenderer>().color = Color.green;
+            capsule.GetComponent<SpriteRenderer>().color = Color.green;
+        }
 
         else
         {
@@ -119,6 +120,11 @@ public class Collision : MonoBehaviour
         Vector3 top, bot;
         CapsulePoints(capsule.transform.position, capsule.transform.up, capsule.transform.localScale.y * 0.5f, out top, out bot);
         ProjectPointLine(projection.transform.position, top, bot);
+        bool collision = CheckCollisionCircles(positionCircle, circleRadius, projection.transform.position, projection.transform.localScale.x * 0.05f);
+        if (collision)
+        {
+            return true;
+        }
         return false;
     }
 
