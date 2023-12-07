@@ -108,12 +108,8 @@ public class Collision : MonoBehaviour
         float distance = Vector2.Distance(new Vector2(positionCircleX, positionCircleY), new Vector2(closestX, closestY));
 
         // Check for collision
-        if (distance < radius)
-        {
-            return true;
-        }
-
-        return false;
+        return distance < radius
+        
     }
 
 
