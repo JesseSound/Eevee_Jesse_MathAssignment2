@@ -847,34 +847,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2681120905516422736, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1558214599}
+      addedObject: {fileID: 1558214606}
     - targetCorrespondingSourceObject: {fileID: 2681120905516422736, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1558214602}
-    - targetCorrespondingSourceObject: {fileID: 2681120905516422736, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1558214604}
   m_SourcePrefab: {fileID: 100100000, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
 --- !u!1 &1558214598 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2681120905516422736, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
   m_PrefabInstance: {fileID: 1558214597}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1558214599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1558214598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56f76d488fe6e64ba617544e43da0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 1
-  mASS: 15
-  gravity: -9.8
 --- !u!4 &1558214601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5233078227345599680, guid: 2253b02c743d658468928f39a4dc3b82, type: 3}
@@ -895,7 +877,7 @@ MonoBehaviour:
   groundHit: 0
   collisionCircle: {fileID: 89318169}
   mtv: {x: 0, y: 0}
---- !u!114 &1558214604
+--- !u!114 &1558214606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -904,9 +886,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1558214598}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c4ab8f98bcfda48ac4229527f61400, type: 3}
+  m_Script: {fileID: 11500000, guid: 57ebc6d421594c94c95375974a7cd4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  mASS: 15
+  gravity: -9.8
+  impForce: 300
 --- !u!1001 &2073457148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -969,13 +955,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2372463161169525859, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2073457152}
-    - targetCorrespondingSourceObject: {fileID: 2372463161169525859, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 2073457155}
     - targetCorrespondingSourceObject: {fileID: 2372463161169525859, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2073457157}
+      addedObject: {fileID: 2073457159}
   m_SourcePrefab: {fileID: 100100000, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
 --- !u!1 &2073457149 stripped
 GameObject:
@@ -992,21 +975,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4053148080180338404, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
   m_PrefabInstance: {fileID: 2073457148}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2073457152
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073457149}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a56f76d488fe6e64ba617544e43da0e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 0
-  mASS: 30
-  gravity: -9.8
 --- !u!4 &2073457154 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3235178721938066954, guid: 3fd2196f189c5004c8bb564ceb3ad810, type: 3}
@@ -1027,7 +995,7 @@ MonoBehaviour:
   groundHit: 0
   collisionCircle: {fileID: 371788984}
   mtv: {x: 0, y: 0}
---- !u!114 &2073457157
+--- !u!114 &2073457159
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1036,9 +1004,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2073457149}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c4ab8f98bcfda48ac4229527f61400, type: 3}
+  m_Script: {fileID: 11500000, guid: 57ebc6d421594c94c95375974a7cd4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  mASS: 30
+  gravity: -9.8
+  impForce: 200
 --- !u!1001 &2124922914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1107,7 +1079,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Square
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 347467139976877241, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1477889419304032346, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
@@ -1116,10 +1089,10 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2745879885615388522, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2124922919}
+      addedObject: {fileID: 2124922925}
     - targetCorrespondingSourceObject: {fileID: 2745879885615388522, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2124922922}
+      addedObject: {fileID: 2124922919}
   m_SourcePrefab: {fileID: 100100000, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
 --- !u!1 &2124922915 stripped
 GameObject:
@@ -1146,7 +1119,7 @@ MonoBehaviour:
   groundHit: 0
   collisionCircle: {fileID: 956875232}
   mtv: {x: 0, y: 0}
---- !u!114 &2124922922
+--- !u!114 &2124922925
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1155,9 +1128,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2124922915}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00c4ab8f98bcfda48ac4229527f61400, type: 3}
+  m_Script: {fileID: 11500000, guid: 57ebc6d421594c94c95375974a7cd4c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  mASS: 10
+  gravity: -9.8
+  impForce: 300
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

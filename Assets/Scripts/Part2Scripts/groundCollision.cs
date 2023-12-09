@@ -36,7 +36,7 @@ public class groundCollision : MonoBehaviour
 
         if (groundhit)
         {
-            Debug.Log("Yikes");
+           
             transform.position -= (Vector3)mtv;
         }
 

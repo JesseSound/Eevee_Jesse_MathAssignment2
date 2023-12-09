@@ -16,16 +16,18 @@ public class MovementPart3 : MonoBehaviour
     public float mASS;
 
     public float gravity = -9.8f;
+    public float impForce;
     Vector3 velocity = Vector3.zero;
 
 
     groundCollision groundDetect;
-
+    impulseForce impulse;
 
     // Start is called before the first frame update
     void Start()
     {
         groundDetect = GetComponent<groundCollision>();
+        impulse = GetComponent<impulseForce>();
         //Get the name of the object the script is attached to. Hopefully, we will be able to condense movement
         objectName = gameObject.name;
         //CONNOR I KNOW YOU HATE STRINGS BUT I DON'T OK AT LEAST NOT IN THIS CONTEXT
@@ -53,11 +55,11 @@ public class MovementPart3 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
-        velocity = Vector3.zero; //reset velocity 
-
+        //velocity = Vector3.zero; //reset velocity 
+        velocity = Vector3.zero;
 
         //do the movement
         if (Input.GetKey(UP))
@@ -81,14 +83,40 @@ public class MovementPart3 : MonoBehaviour
             Debug.Log("RIGHT!");
             velocity.x = 5.0f;
         }
+        
+            
+        
 
         if (groundDetect.groundHit)
         {
-            velocity.y = 0;
+            velocity.y= 0;
+           
         }
 
         float gravForce = mASS * gravity;
         velocity.y += gravForce * Time.deltaTime;
         transform.position += velocity * Time.deltaTime;
+       
+        
     }
+    private void Update()
+    {
+        
+    
+    Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+    float dist = Vector2.Distance(mousePosition, gameObject.transform.position);
+        if (Input.GetMouseButtonDown(0) && dist <= 0.5f)
+        {
+
+            
+            float impulse = impForce * Time.deltaTime;
+            float velocityF = -9.8f + (impulse * Time.deltaTime) / mASS;
+            transform.position -= new Vector3(0.0f, velocityF, 0.0f);
+        }
+}
+   
+
+
+
+
 }
