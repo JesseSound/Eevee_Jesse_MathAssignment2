@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class CollisionPart2 : MonoBehaviour
 {
@@ -126,12 +125,7 @@ public class CollisionPart2 : MonoBehaviour
         float distance = Vector2.Distance(new Vector2(positionCircleX, positionCircleY), new Vector2(closestX, closestY));
 
         // Check for collision
-        if (distance < radius)
-        {
-            return true;
-        }
-
-        return false;
+        return distance < radius;
     }
 
 

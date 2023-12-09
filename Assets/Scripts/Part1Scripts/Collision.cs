@@ -1,9 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UIElements;
+
 
 public class Collision : MonoBehaviour
 {
@@ -19,8 +18,7 @@ public class Collision : MonoBehaviour
     public GameObject projectionSqr; //for square capsule projection
     
 
-
-
+    
 
 
 
@@ -108,7 +106,7 @@ public class Collision : MonoBehaviour
         float distance = Vector2.Distance(new Vector2(positionCircleX, positionCircleY), new Vector2(closestX, closestY));
 
         // Check for collision
-        return distance < radius
+        return distance < radius;
         
     }
 

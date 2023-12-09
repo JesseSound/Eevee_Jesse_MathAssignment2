@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 224239995}
   - component: {fileID: 224239996}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: grass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -321,8 +321,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1390190924}
   - {fileID: 224239995}
+  - {fileID: 1390190924}
   - {fileID: 761764060}
   - {fileID: 2022758199}
   m_Father: {fileID: 0}
@@ -697,9 +697,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a56f76d488fe6e64ba617544e43da0e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
+  moveSpeed: 1
   mASS: 15
-  gravity: 0
+  gravity: -9.8
+  isGrounded: 0
+  ground: {fileID: 224239994}
 --- !u!1 &2022758198
 GameObject:
   m_ObjectHideFlags: 0
@@ -875,6 +877,8 @@ MonoBehaviour:
   moveSpeed: 0
   mASS: 30
   gravity: -9.8
+  isGrounded: 0
+  ground: {fileID: 224239994}
 --- !u!1001 &2124922914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -886,6 +890,18 @@ PrefabInstance:
     - target: {fileID: 347467139976877241, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
       propertyPath: mASS
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 347467139976877241, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
+      propertyPath: ground
+      value: 
+      objectReference: {fileID: 224239994}
+    - target: {fileID: 347467139976877241, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
+      propertyPath: raycastDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 347467139976877241, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
+      propertyPath: groundLayer.m_Bits
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1477889419304032346, guid: 91c29126210409e4daf61dc5ff7120ef, type: 3}
       propertyPath: m_LocalPosition.x
