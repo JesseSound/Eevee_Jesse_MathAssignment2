@@ -167,28 +167,7 @@ public class Collision : MonoBehaviour
 
     bool CheckCollisionCircles(Vector3 position1, float radius1, Vector3 position2, float radius2)
     {
-        // Distance between position 1 and position 2
-        float distance = (position1 - position2).magnitude;
-
-        // Direction from to position 2 to position 1
-        Vector3 direction = (position1 - position2).normalized;
-
-        // Sum of radii
-        float radiiSum = radius1 + radius2;
-
-        // Collision if distance between circles is less than the sum of their radii!
-        bool collision = distance < radiiSum;
-        //if (collision)
-        //{
-        //    // calculate mtv only if there's a collision
-        //    float depth = radiisum - distance;
-        //    mtv = direction * depth;
-        //}
-        //else
-        //{
-        //    mtv = vector3.zero;
-        //}
-        return collision;
+        return Vector2.Distance(position1, position2) < radius1 + radius2;
     }
 
 
