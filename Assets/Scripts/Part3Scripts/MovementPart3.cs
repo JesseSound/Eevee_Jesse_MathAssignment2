@@ -89,7 +89,7 @@ public class MovementPart3 : MonoBehaviour
 
         if (groundDetect.groundHit)
         {
-            velocity.y= 0;
+            //velocity.y= 0;
            
         }
 
