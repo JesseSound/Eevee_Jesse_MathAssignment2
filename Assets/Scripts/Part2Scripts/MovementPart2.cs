@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class MovementPart2 : MonoBehaviour
 {
+     
+
+
     public float moveSpeed;
 
     string objectName;
@@ -13,17 +16,20 @@ public class MovementPart2 : MonoBehaviour
     KeyCode DOWN;
     KeyCode LEFT;
     KeyCode RIGHT;
-    
+
     public float mASS;
 
     public float gravity = -9.8f;
     Vector3 velocity = Vector3.zero;
-    //raycast for ground detection kek
-    public bool isGrounded;
-    public GameObject ground;
+
+
+    
+
+
     // Start is called before the first frame update
     void Start()
     {
+       
         //Get the name of the object the script is attached to. Hopefully, we will be able to condense movement
         objectName = gameObject.name;
         //CONNOR I KNOW YOU HATE STRINGS BUT I DON'T OK AT LEAST NOT IN THIS CONTEXT
@@ -49,28 +55,20 @@ public class MovementPart2 : MonoBehaviour
             LEFT = KeyCode.F;
         }
     }
-    bool IsGrounded()
-    {
-        float distanceToGround = Vector2.Distance(gameObject.transform.position, ground.transform.position);
-        // Cast a ray downward and check for collision with the ground layer
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 0.5f);
-        Debug.DrawRay(transform.position, Vector2.down * 0.5f, Color.red);
 
-       
-        return true;
-    }
     // Update is called once per frame
     void Update()
     {
-        
+
         velocity = Vector3.zero; //reset velocity 
 
 
         //do the movement
-        if (Input.GetKey(UP))
+        if (Input.GetKey(UP) )
         {
             Debug.Log("UP!");
             velocity.y = 5.0f;
+          
         }
         else if (Input.GetKey(DOWN))
         {
@@ -88,22 +86,14 @@ public class MovementPart2 : MonoBehaviour
             velocity.x = 5.0f;
         }
 
-        isGrounded = IsGrounded();
-        
-        if (isGrounded)
-        {
-            Debug.Log("Hit!");
-            velocity.y = 0.0f;
-            gravity = 0;
-            Debug.Log("Hit!");
-        }
-        else
-        {
 
+
+
+        
             float gravForce = mASS * gravity;
             velocity.y += gravForce * Time.deltaTime;
             transform.position += velocity * Time.deltaTime;
-        }
-        
     }
-}
+  
+   }
+
