@@ -23,13 +23,13 @@ public class MovementPart2 : MonoBehaviour
     Vector3 velocity = Vector3.zero;
 
 
-    
+    groundCollision groundDetect;
 
 
     // Start is called before the first frame update
     void Start()
     {
-       
+        groundDetect = GetComponent<groundCollision>();
         //Get the name of the object the script is attached to. Hopefully, we will be able to condense movement
         objectName = gameObject.name;
         //CONNOR I KNOW YOU HATE STRINGS BUT I DON'T OK AT LEAST NOT IN THIS CONTEXT
@@ -86,10 +86,11 @@ public class MovementPart2 : MonoBehaviour
             velocity.x = 5.0f;
         }
 
-
-
-
-        
+        if (groundDetect.groundHit)
+        {
+            velocity.y = 0;
+        }
+       
             float gravForce = mASS * gravity;
             velocity.y += gravForce * Time.deltaTime;
             transform.position += velocity * Time.deltaTime;

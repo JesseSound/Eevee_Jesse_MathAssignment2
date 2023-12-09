@@ -6,10 +6,10 @@ using UnityEngine;
 public class groundCollision : MonoBehaviour
 {
     GameObject ground;
-
-    GameObject[] vertices = new GameObject[4];
+    public bool groundHit;
+    
     GameObject nearest;
-    public GameObject pointPrefab;
+    
     public GameObject collisionCircle; //going to try using circle square collision on every object by being janky
     public Vector2 mtv;
     //how are we being janky?
