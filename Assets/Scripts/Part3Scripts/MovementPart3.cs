@@ -21,13 +21,13 @@ public class MovementPart3 : MonoBehaviour
 
 
     groundCollision groundDetect;
-    impulseForce impulse;
+    
 
     // Start is called before the first frame update
     void Start()
     {
         groundDetect = GetComponent<groundCollision>();
-        impulse = GetComponent<impulseForce>();
+        
         //Get the name of the object the script is attached to. Hopefully, we will be able to condense movement
         objectName = gameObject.name;
         //CONNOR I KNOW YOU HATE STRINGS BUT I DON'T OK AT LEAST NOT IN THIS CONTEXT
@@ -110,7 +110,7 @@ public class MovementPart3 : MonoBehaviour
 
             
             float impulse = impForce * Time.deltaTime;
-            float velocityF = -9.8f + (impulse * Time.deltaTime) / mASS;
+            float velocityF = (-9.8f - impulse) / mASS;
             transform.position -= new Vector3(0.0f, velocityF, 0.0f);
         }
 }

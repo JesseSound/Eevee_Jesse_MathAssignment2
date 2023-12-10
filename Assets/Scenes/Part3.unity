@@ -892,7 +892,7 @@ MonoBehaviour:
   moveSpeed: 0
   mASS: 15
   gravity: -9.8
-  impForce: 300
+  impForce: 21000
 --- !u!1001 &2073457148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1010,7 +1010,7 @@ MonoBehaviour:
   moveSpeed: 0
   mASS: 30
   gravity: -9.8
-  impForce: 200
+  impForce: 26000
 --- !u!1001 &2124922914
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1134,7 +1134,7 @@ MonoBehaviour:
   moveSpeed: 0
   mASS: 10
   gravity: -9.8
-  impForce: 300
+  impForce: 20000
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
