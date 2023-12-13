@@ -57,7 +57,7 @@ public class MovementPart2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
 
         velocity = Vector3.zero; //reset velocity 
